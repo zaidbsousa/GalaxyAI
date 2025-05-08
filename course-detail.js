@@ -106,13 +106,18 @@ function updateCourseUI(courseData, badgeUrl) {
     // Tools
     const toolsGrid = document.getElementById('courseTools');
     toolsGrid.innerHTML = '';
+    console.log('Tools:', courseData.acf?.tools);
     if (Array.isArray(courseData.acf?.tools)) {
         courseData.acf.tools.forEach(tool => {
+            // If tool is a string, use it as the name; if it's an object, use its properties
+            let name = typeof tool === 'string' ? tool : tool?.name || 'N/A';
+            let image = typeof tool === 'object' && tool?.tool_image ? tool.tool_image : '';
+
             const toolDiv = document.createElement('div');
             toolDiv.className = 'tool-item';
             toolDiv.innerHTML = `
-                <img src="${tool.tool_image}" alt="${tool.name}" class="tool-image">
-                <h3>${tool.name}</h3>
+                <img src="${image}" alt="${name}" class="tool-image">
+                <h3>${name}</h3>
             `;
             toolsGrid.appendChild(toolDiv);
         });
