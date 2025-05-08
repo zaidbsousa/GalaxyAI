@@ -81,18 +81,18 @@ async function fetchCourseBadge(mediaId) {
 
 // Function to update the course details in the UI
 function updateCourseUI(courseData, badgeUrl) {
-    // Update course title and code
-    document.getElementById('courseTitle').textContent = courseData.title;
-    document.getElementById('courseCode').textContent = courseData.acf.certificate_code;
-    
-    // Update course duration and level
-    document.getElementById('courseDuration').textContent = courseData.acf.duration;
-    document.getElementById('courseLevel').textContent = 'Beginner'; // You might want to get this from the API if available
-    
-    // Update prerequisites
-    document.getElementById('coursePrerequisites').textContent = courseData.acf.prerequisite;
-    
-    // Update course modules
+    // Title and code
+    document.getElementById('courseTitle').textContent = courseData.title?.rendered || 'N/A';
+    document.getElementById('courseCode').textContent = courseData.acf?.certificate_code || 'N/A';
+
+    // Duration and level
+    document.getElementById('courseDuration').textContent = courseData.acf?.duration || 'N/A';
+    document.getElementById('courseLevel').textContent = courseData.acf?.level || 'N/A';
+
+    // Prerequisites
+    document.getElementById('coursePrerequisites').textContent = courseData.acf?.prerequisite || 'N/A';
+
+    // Modules
     const modulesList = document.getElementById('courseModules');
     modulesList.innerHTML = '';
     if (Array.isArray(courseData.acf?.certification_module)) {
@@ -102,27 +102,29 @@ function updateCourseUI(courseData, badgeUrl) {
             modulesList.appendChild(li);
         });
     }
-    
-    // Update tools
+
+    // Tools
     const toolsGrid = document.getElementById('courseTools');
     toolsGrid.innerHTML = '';
-    courseData.acf.tools.forEach(tool => {
-        const toolDiv = document.createElement('div');
-        toolDiv.className = 'tool-item';
-        toolDiv.innerHTML = `
-            <img src="${tool.tool_image}" alt="${tool.name}" class="tool-image">
-            <h3>${tool.name}</h3>
-        `;
-        toolsGrid.appendChild(toolDiv);
-    });
-    
-    // Update exam information
-    document.getElementById('passingScore').textContent = courseData.acf.passing_score;
-    document.getElementById('numberOfMCQs').textContent = courseData.acf.number_of_mcqs;
-    document.getElementById('numberOfExams').textContent = courseData.acf.number_of_examinations;
-    document.getElementById('examObjectives').textContent = courseData.acf.exam_objectives;
-    
-    // Update course badge
+    if (Array.isArray(courseData.acf?.tools)) {
+        courseData.acf.tools.forEach(tool => {
+            const toolDiv = document.createElement('div');
+            toolDiv.className = 'tool-item';
+            toolDiv.innerHTML = `
+                <img src="${tool.tool_image}" alt="${tool.name}" class="tool-image">
+                <h3>${tool.name}</h3>
+            `;
+            toolsGrid.appendChild(toolDiv);
+        });
+    }
+
+    // Exam info
+    document.getElementById('passingScore').textContent = courseData.acf?.passing_score || 'N/A';
+    document.getElementById('numberOfMCQs').textContent = courseData.acf?.number_of_mcqs || 'N/A';
+    document.getElementById('numberOfExams').textContent = courseData.acf?.number_of_examinations || 'N/A';
+    document.getElementById('examObjectives').textContent = courseData.acf?.exam_objectives || 'N/A';
+
+    // Badge
     if (badgeUrl) {
         document.getElementById('courseBadge').src = badgeUrl;
     }
