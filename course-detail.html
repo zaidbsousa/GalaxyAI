@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Details - Galaxy AI</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ui-components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="subpage-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/galaxy-logo.png" alt="Galaxy Training Center Logo">
+                    </a>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="menu-icon"></span>
+                </button>
+                <nav class="nav" role="navigation" aria-label="Main navigation">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="index.html#benefits" class="nav-link">Why Galaxy</a></li>
+                        <li><a href="index.html#courses" class="nav-link">Courses</a></li>
+                        <li><a href="index.html#about" class="nav-link">Benefits</a></li>
+                        <li><a href="index.html#contact" class="nav-link btn btn-primary">Contact Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="course-detail-page">
+        <div class="container">
+            <div class="course-header">
+                <div class="course-badge-container">
+                    <img id="courseBadge" src="" alt="Course Badge" class="course-badge-image">
+                </div>
+                <div class="course-info">
+                    <h1 id="courseTitle" class="course-title"></h1>
+                    <p id="courseCode" class="course-code"></p>
+                    <div class="course-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span id="courseDuration"></span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-signal"></i>
+                            <span id="courseLevel"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-content">
+                <section class="course-section">
+                    <h2>Prerequisites</h2>
+                    <p id="coursePrerequisites"></p>
+                </section>
+
+                <section class="course-section">
+                    <h2>Course Modules</h2>
+                    <ul id="courseModules" class="module-list"></ul>
+                </section>
+
+                <section class="course-section">
+                    <h2>Tools Covered</h2>
+                    <div id="courseTools" class="tools-grid"></div>
+                </section>
+
+                <section class="course-section">
+                    <h2>Exam Information</h2>
+                    <div class="exam-info">
+                        <div class="info-item">
+                            <h3>Passing Score</h3>
+                            <p id="passingScore"></p>
+                        </div>
+                        <div class="info-item">
+                            <h3>Number of MCQs</h3>
+                            <p id="numberOfMCQs"></p>
+                        </div>
+                        <div class="info-item">
+                            <h3>Number of Examinations</h3>
+                            <p id="numberOfExams"></p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="course-section">
+                    <h2>Exam Objectives</h2>
+                    <p id="examObjectives"></p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Galaxy AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="course-detail.js"></script>
+</body>
+</html> 

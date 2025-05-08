@@ -1,1 +1,1 @@
-# GalaxyAI
+# Galaxy_AI
