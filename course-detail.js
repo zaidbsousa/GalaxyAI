@@ -95,11 +95,13 @@ function updateCourseUI(courseData, badgeUrl) {
     // Update course modules
     const modulesList = document.getElementById('courseModules');
     modulesList.innerHTML = '';
-    courseData.acf.certification_module.forEach(module => {
-        const li = document.createElement('li');
-        li.textContent = module;
-        modulesList.appendChild(li);
-    });
+    if (Array.isArray(courseData.acf?.certification_module)) {
+        courseData.acf.certification_module.forEach(module => {
+            const li = document.createElement('li');
+            li.textContent = module;
+            modulesList.appendChild(li);
+        });
+    }
     
     // Update tools
     const toolsGrid = document.getElementById('courseTools');
